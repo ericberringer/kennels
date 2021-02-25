@@ -3,8 +3,16 @@ import { AnimalCard } from "../animal/AnimalCard"
 import { CustomerCard } from "../customer/CustomerCard"
 import { PropsAndState } from "./PropsAndState"
 import "./Kennel.css"
+import { NavBar } from "./nav/NavBar"
+import { ApplicationViews } from "./ApplicationViews"
 
 export const Kennel = () => {
+    
+    // <>
+    // <NavBar />
+    // <ApplicationViews />
+    // </>
+
     const [kennel, setKennel] = useState ({
         name: "Dog Place",
         locations: [
@@ -26,22 +34,6 @@ export const Kennel = () => {
             "id": 2
         }
     ]
-
-    const [animals, setAnimals] = useState([])
-
-
-    // useEffect(callback function, [])
-    // import useEffect, this is defined in react.
-    // useEffect takes two arguments, callback function and an array. this is a build in react hook.
-    // This will allow you to do something when the data is changed.
-    // Anytime the item in the [] (at end of fetch call) is used, useEffect is run.
-    // Watch out what you pass in the [], this could start an infinite loop. You probably wont pass anything here yet.
-    useEffect(() => {
-        console.log("Fetching animals from API")
-        fetch("http://localhost:8088/animals")
-        .then(response => response.json())
-        .then(animalsData => setAnimals(animalsData))
-    }, [])
     
     // const [animals, setAnimals] = useState([
     //     {
@@ -75,15 +67,17 @@ export const Kennel = () => {
     // ])
 
     // let counter = 1
+    // useState() is called a hook. It stores data about the component. 
+    // "My component has its own state to maintain. Therefore, I will use the State hook to store it."
+    // When this counter is updated it will re-render.
     let [counter, setCounter] = useState(1)
     // This is usually declared at the top of the function (Kennel).
+
 
     
     // the initial value of counter is 1 because 1 is being passed into useState().
     // this hook (useState) returns an array with two objects, counter is a variable, and setCounter is a call back Function.
     // naming convention of call back function is to use 'set'.
-    // 
-    
     const incrementCounter = () => {
         const newCounterValue = ++counter
         setCounter(newCounterValue)
@@ -98,17 +92,12 @@ export const Kennel = () => {
             <div>{kennel.locations[0].address}</div>
         </address>
         <PropsAndState yourName={"Eric"} />
+        {/* PropsAndState is a function that returns html with a representation of my name so I am sending it
+        a prop (yourName) with my name as the object. yourName is passed into the function.  */}
         <div>Currently Helping #{counter}</div>
         <button className="button" onClick={incrementCounter}>Take a number</button>
         {/* onClick is calling incrementCounter function */}
         <h2 className="animalHeader">Animals</h2>
-        <article className="animals">
-            {
-                animals.map(animal => {
-                    return <AnimalCard key={animal.id} animal={animal}/>
-                })
-            }
-        </article>
             <h2 className="customerHeader">Customers</h2>
         <article className="customers">
             {
@@ -116,6 +105,10 @@ export const Kennel = () => {
                     return <CustomerCard key={customer.id} customer={customer}/>
                 })
             }
+            {/* import <AnimalProvider> 
+                        <AnimalList />
+                         <AnimalProvider />        
+            */}
         </article>
         </>
     )
