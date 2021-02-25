@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { AnimalCard } from "../animal/AnimalCard"
 import { CustomerCard } from "../customer/CustomerCard"
 import { PropsAndState } from "./PropsAndState"
@@ -26,37 +26,53 @@ export const Kennel = () => {
             "id": 2
         }
     ]
+
+    const [animals, setAnimals] = useState([])
+
+
+    // useEffect(callback function, [])
+    // import useEffect, this is defined in react.
+    // useEffect takes two arguments, callback function and an array. this is a build in react hook.
+    // This will allow you to do something when the data is changed.
+    // Anytime the item in the [] (at end of fetch call) is used, useEffect is run.
+    // Watch out what you pass in the [], this could start an infinite loop. You probably wont pass anything here yet.
+    useEffect(() => {
+        console.log("Fetching animals from API")
+        fetch("http://localhost:8088/animals")
+        .then(response => response.json())
+        .then(animalsData => setAnimals(animalsData))
+    }, [])
     
-    const [animals, setAnimals] = useState([
-        {
-            "name": "Doodles",
-            "breed": "Poodles",
-            "locationId": 1,
-            "customerId": 3,
-            "id": 1
-        },
-        {
-            "name": "Poop Eater",
-            "breed": "Eats Pooper",
-            "locationId": 1,
-            "customerId": 2,
-            "id": 2
-        },
-        {
-            "name": "Poopa",
-            "breed": "Turtle",
-            "locationId": 1,
-            "customerId": 2,
-            "id": 3
-        },
-        {
-            "name": "Terrence",
-            "breed": "Hawk",
-            "locationId": 4,
-            "customerId": 4,
-            "id": 4
-        }
-    ])
+    // const [animals, setAnimals] = useState([
+    //     {
+    //         "name": "Doodles",
+    //         "breed": "Poodles",
+    //         "locationId": 1,
+    //         "customerId": 3,
+    //         "id": 1
+    //     },
+    //     {
+    //         "name": "Poop Eater",
+    //         "breed": "Eats Pooper",
+    //         "locationId": 1,
+    //         "customerId": 2,
+    //         "id": 2
+    //     },
+    //     {
+    //         "name": "Poopa",
+    //         "breed": "Turtle",
+    //         "locationId": 1,
+    //         "customerId": 2,
+    //         "id": 3
+    //     },
+    //     {
+    //         "name": "Terrence",
+    //         "breed": "Hawk",
+    //         "locationId": 4,
+    //         "customerId": 4,
+    //         "id": 4
+    //     }
+    // ])
 
     // let counter = 1
     let [counter, setCounter] = useState(1)
@@ -71,7 +87,7 @@ export const Kennel = () => {
     const incrementCounter = () => {
         const newCounterValue = ++counter
         setCounter(newCounterValue)
-        console.log("counter", counter)
+        // console.log("counter", counter)
     }
     return (
         <>
