@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { Kennel } from "./Components/Kennel"
+import { Kennel } from "./components/Kennel"
 
 ReactDOM.render(
   <React.StrictMode>

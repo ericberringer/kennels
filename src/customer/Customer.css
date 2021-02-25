@@ -1,7 +1,8 @@
 .customers {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
+    text-align: center;
   }
   
   .customer {
@@ -10,3 +11,7 @@
       padding: 1em;
       border: 1px solid goldenrod;
   }
+
+  .customerHeader {
+    text-align: center;
+}

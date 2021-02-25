@@ -12,6 +12,12 @@ textarea {
   font-family: "Comfortaa", Arial, sans-serif;
   font-size: 14px;
   line-height: 1.5;
+  text-align: center;
+  background-color: #cad9d999;
+}
+
+.button {
+    background-color: rgba(91, 103, 71, 0.84);
 }
 
 h1,

@@ -1,10 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import { AnimalCard } from "../animal/AnimalCard"
 import { CustomerCard } from "../customer/CustomerCard"
+import { PropsAndState } from "./PropsAndState"
 import "./Kennel.css"
 
 export const Kennel = () => {
-    const kennel = {
+    const [kennel, setKennel] = useState ({
         name: "Dog Place",
         locations: [
             {
@@ -12,7 +13,7 @@ export const Kennel = () => {
                 address: "500 Poopy Place"
             }
         ]
-    }
+    })
     const customer = [
         {
             "name": "Dirk Diggler",
@@ -26,7 +27,7 @@ export const Kennel = () => {
         }
     ]
     
-    const animals = [
+    const [animals, setAnimals] = useState([
         {
             "name": "Doodles",
             "breed": "Poodles",
@@ -55,8 +56,23 @@ export const Kennel = () => {
             "customerId": 4,
             "id": 4
         }
-    ]
+    ])
 
+    // let counter = 1
+    let [counter, setCounter] = useState(1)
+    // This is usually declared at the top of the function (Kennel).
+
+    
+    // the initial value of counter is 1 because 1 is being passed into useState().
+    // this hook (useState) returns an array with two objects, counter is a variable, and setCounter is a call back Function.
+    // naming convention of call back function is to use 'set'.
+    // 
+    
+    const incrementCounter = () => {
+        const newCounterValue = ++counter
+        setCounter(newCounterValue)
+        console.log("counter", counter)
+    }
     return (
         <>
         <h2>{kennel.name}</h2>
@@ -65,7 +81,11 @@ export const Kennel = () => {
             <div>{kennel.locations[0].name}</div>
             <div>{kennel.locations[0].address}</div>
         </address>
-        <h2>Animals</h2>
+        <PropsAndState yourName={"Eric"} />
+        <div>Currently Helping #{counter}</div>
+        <button className="button" onClick={incrementCounter}>Take a number</button>
+        {/* onClick is calling incrementCounter function */}
+        <h2 className="animalHeader">Animals</h2>
         <article className="animals">
             {
                 animals.map(animal => {
@@ -73,7 +93,7 @@ export const Kennel = () => {
                 })
             }
         </article>
-            <h2>Customers</h2>
+            <h2 className="customerHeader">Customers</h2>
         <article className="customers">
             {
                 customer.map(customer => {
