@@ -24,11 +24,15 @@ export const ApplicationViews = () => {
             </Route>
 
             {/* Render the animal list when http://localhost:3000/animals */}
-             <AnimalProvider>
-                <Route path="/animals">
 {/* The Animal List is wrapped in the animal provider has to do with Context. */}
-                    <AnimalList />
-                </Route>           
+             <AnimalProvider>
+                 <LocationProvider>
+                    <CustomerProvider>
+                        <Route path="/animals">
+                            <AnimalList />
+                        </Route>           
+                    </CustomerProvider>
+                 </LocationProvider>
              </AnimalProvider>
             
             <CustomerProvider>
