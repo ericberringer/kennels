@@ -5,6 +5,11 @@ import { AnimalList } from "../animal/AnimalList"
 import { AnimalProvider } from "../animal/AnimalProvider"
 import { CustomerList } from "../customer/CustomerList"
 import { CustomerProvider } from "../customer/CustomerProvider"
+import { EmployeeList } from "../employee/EmployeeList"
+import { EmployeeProvider } from "../employee/EmployeeProvider"
+import { LocationList } from "../location/LocationList"
+import { LocationProvider } from "../location/LocationProvider"
+
 
 // This is where we define how the application will respond when the URL matches each
 // of those patterns. When a user clicks a link in the nav bar the code dictates what should be rendered.
@@ -32,13 +37,17 @@ export const ApplicationViews = () => {
                 </Route>
             </CustomerProvider>
             
-            {/* <Route path="/locations">
-                <LocationList />
-            </Route>
-            
-            <Route path="/employees">
-                <EmployeeList />
-            </Route> */}
+            <LocationProvider>
+                <Route path="/locations">
+                    <LocationList />
+                </Route>
+            </LocationProvider>
+
+            <EmployeeProvider>
+                <Route path="/employees">
+                    <EmployeeList />
+                </Route>
+            </EmployeeProvider>
 
         </>
     )
