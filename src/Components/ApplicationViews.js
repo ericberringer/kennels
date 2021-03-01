@@ -3,7 +3,8 @@ import { Route } from "react-router-dom"
 import { Home } from "./Home"
 import { AnimalList } from "../animal/AnimalList"
 import { AnimalProvider } from "../animal/AnimalProvider"
-// import { CustomerList } from "../customer/CustomerList"
+import { CustomerList } from "../customer/CustomerList"
+import { CustomerProvider } from "../customer/CustomerProvider"
 
 // This is where we define how the application will respond when the URL matches each
 // of those patterns. When a user clicks a link in the nav bar the code dictates what should be rendered.
@@ -25,11 +26,13 @@ export const ApplicationViews = () => {
                 </Route>           
              </AnimalProvider>
             
-            {/* <Route path="/customers">
-                <CustomerList />
-            </Route>
+            <CustomerProvider>
+                <Route path="/customers">
+                    <CustomerList />
+                </Route>
+            </CustomerProvider>
             
-            <Route path="/locations">
+            {/* <Route path="/locations">
                 <LocationList />
             </Route>
             
