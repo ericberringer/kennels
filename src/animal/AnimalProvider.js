@@ -10,8 +10,7 @@ export const AnimalContext = createContext()
 export const AnimalProvider = (props) => {
     const [animals, setAnimals] = useState([])
     // setAnimals is a function that allows us to set a value to the animals variable and update it.
-    // animals will hold all of the animals from our api via .then(setAnimals)
-    // in our fetch call.
+    // animals will hold all of the animals from our api via .then(setAnimals) in our fetch call.
     // useState will hold and set the array of animals.
 
 
