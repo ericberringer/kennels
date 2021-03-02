@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from "react"
+import { useHistory } from "react-router-dom"
 import { AnimalContext } from "./AnimalProvider"
 import { CustomerContext } from "../customer/CustomerProvider"
 import { LocationContext } from "../location/LocationProvider"
@@ -10,6 +11,10 @@ export const AnimalList = () => {
     const { animals, getAnimals } = useContext(AnimalContext)
     const { locations, getLocations } = useContext(LocationContext)
     const { customers, getCustomers } = useContext(CustomerContext)
+
+    // useHistory tells React which route we want to visit.
+    // We will use it to tell React to render the animal form component.
+    const history = useHistory()
 
     // useEffect(callback function, [])
     // import useEffect, this is defined in react.
@@ -41,6 +46,11 @@ return (
           })
         }
     </div>
+        <div className="animalButtonDiv">
+          <button className="addAnimalButton" onClick={() => {history.push("/animals/create")}}>
+            Add Animal
+          </button>
+        </div>
   </>
     )
 }
