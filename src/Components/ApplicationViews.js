@@ -10,6 +10,7 @@ import { EmployeeProvider } from "../employee/EmployeeProvider"
 import { LocationList } from "../location/LocationList"
 import { LocationProvider } from "../location/LocationProvider"
 import { AnimalForm } from "../animal/AnimalForm"
+import { EmployeeForm } from "../employee/EmployeeForm"
 
 
 // This is where we define how the application will respond when the URL matches each
@@ -46,17 +47,22 @@ export const ApplicationViews = () => {
                 </Route>
             </CustomerProvider>
             
-            <LocationProvider>
+        <LocationProvider>
                 <Route path="/locations">
                     <LocationList />
                 </Route>
-            </LocationProvider>
 
+        
             <EmployeeProvider>
                 <Route path="/employees">
                     <EmployeeList />
                 </Route>
+
+                <Route path="/employees/create">
+                    <EmployeeForm />
+                </Route>
             </EmployeeProvider>
+        </LocationProvider>
 
         </>
     )
