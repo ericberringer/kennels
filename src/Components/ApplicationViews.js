@@ -9,6 +9,7 @@ import { EmployeeList } from "../employee/EmployeeList"
 import { EmployeeProvider } from "../employee/EmployeeProvider"
 import { LocationList } from "../location/LocationList"
 import { LocationProvider } from "../location/LocationProvider"
+import { AnimalForm } from "../animal/AnimalForm"
 
 
 // This is where we define how the application will respond when the URL matches each
@@ -30,6 +31,10 @@ export const ApplicationViews = () => {
                     <CustomerProvider>
                         <Route path="/animals">
                             <AnimalList />
+                        </Route>
+
+                        <Route path="/animals/create">
+                            <AnimalForm />    
                         </Route>           
                     </CustomerProvider>
                  </LocationProvider>
