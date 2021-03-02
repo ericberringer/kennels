@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from "react"
+import { useHistory } from "react-router-dom"
 import { EmployeeContext } from "./EmployeeProvider"
 import { EmployeeCard } from "./EmployeeCard"
 import "./Employee.css"
@@ -11,6 +12,8 @@ export const EmployeeList = () => {
         getEmployees()
     }, [])
 
+    const history = useHistory()
+
     return (
         <>
             <h3>Employees</h3>
@@ -21,6 +24,11 @@ export const EmployeeList = () => {
                 })
                 }
             </div>
+        <div className="employeeButtonDiv">
+          <button className="addEmployeeButton" onClick={() => {history.push("/employees/create")}}>
+            New Employee
+          </button>
+        </div>
   </>
     )
 }
