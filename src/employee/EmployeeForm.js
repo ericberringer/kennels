@@ -76,7 +76,7 @@ export const EmployeeForm = () => {
             </fieldset>
             <button className="btn btn-primary"
               onClick={handleClickSaveEmployee}>
-              New Employee
+              Add Employee
             </button>
         </form>
       )

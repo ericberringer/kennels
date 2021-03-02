@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from "react"
+import { useHistory } from "react-router-dom"
 import { LocationContext } from "./LocationProvider"
 import { LocationCard } from "./LocationCard"
 import "./Location.css"
@@ -11,6 +12,8 @@ export const LocationList = () => {
         getLocations()
     }, [])
 
+    const history = useHistory()
+
     return (
         <>
             <h3>Locations</h3>
@@ -21,6 +24,11 @@ export const LocationList = () => {
                 })
                 }
             </div>
+        <div className="locationButtonDiv">
+          <button className="addLocationButton" onClick={() => {history.push("/locations/create")}}>
+            New Location
+          </button>
+        </div>
   </>
     )
 }
