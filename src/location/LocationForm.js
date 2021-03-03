@@ -8,7 +8,8 @@ export const LocationForm = () => {
     
     const { locations, getLocations, addLocations } = useContext(LocationContext)
 
-    const [location, setLocation] = useState({
+    const [location, setLocation] = useState(
+    {
         name: "",
         address: ""
     });
@@ -36,10 +37,8 @@ export const LocationForm = () => {
 
       const handleClickSaveLocation = (event) => {
         event.preventDefault() //Prevents the browser from submitting the form
-  
-        const locationId = locationId
-  
-        if (locationId === 0 ) {
+
+        if (location.name === "" || location.address === "") {
           window.alert("Please enter a location")
         } else {
           addLocations(location)
@@ -56,11 +55,9 @@ export const LocationForm = () => {
                     <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Location name" value={location.name}/>
                 </div>
             </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="location">Address: </label>
-                    <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Location address" value={location.address}/>                    
-                </div>
+            <fieldset> 
+                    <label htmlFor="address">Address: </label>
+                    <input type="text" id="address" onChange={handleControlledInputChange} required className="form-control" placeholder="Location address" value={location.address}/> 
             </fieldset>
             <button className="btn btn-primary"
               onClick={handleClickSaveLocation}>

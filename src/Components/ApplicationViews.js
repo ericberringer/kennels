@@ -52,7 +52,7 @@ export const ApplicationViews = () => {
                 <Route path="/locations">
                     <LocationList />
                 </Route>
-
+{/* Try using exact path instead of just path */}
                 <Route path="/locations/create">
                     <LocationForm />
                 </Route>
