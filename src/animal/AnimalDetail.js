@@ -5,14 +5,25 @@ import { useParams, useHistory } from "react-router-dom"
 
 export const AnimalDetail = () => {
     // useContext is bringing in the getAnimalById from our AnimalProvider.
-  const { getAnimalById } = useContext(AnimalContext)
+  const { getAnimalById, releaseAnimal } = useContext(AnimalContext)
 
 	const [animal, setAnimal] = useState({})
 
 	const {animalId} = useParams();
+    // Gets the id of the animal we want.
     // useParams is a react function that allows the app
     // to read a paramater from the URL {animalId} is linked to the {id} param in our URL in the data provider.
-	const history = useHistory();
+    // This {animalId} is at the end of the animal detail exact path url in the route in application view.
+	
+  const history = useHistory();
+
+
+  const handleRelease = () => {
+    releaseAnimal(animal.id)
+      .then(() => {
+        history.push("/animals")
+      })
+  }
 
   useEffect(() => {
     console.log("useEffect", animalId)
@@ -30,7 +41,7 @@ export const AnimalDetail = () => {
       from breaking the code.*/}
       <div className="animal__location">Location: {animal.location?.name}</div>
       <div className="animal__owner">Customer: {animal.customer?.name}</div>
-      <button>Release Animal</button>
+      <button onClick={handleRelease}>Release Animal</button>
       <button>Edit</button>
     </section>
   )

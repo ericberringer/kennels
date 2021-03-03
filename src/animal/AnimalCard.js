@@ -6,6 +6,7 @@ export const AnimalCard = ({animal, customer, location})=> (
     <section className="animal">
         <h3 className="animal__name">
         <Link to={`/animals/detail/${animal.id}`}>
+            {/* This will set the id of the animal in the url */}
           { animal.name }
         </Link>
         </h3>

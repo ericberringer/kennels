@@ -3,13 +3,19 @@ import { useHistory } from "react-router-dom"
 import { LocationContext } from "./LocationProvider"
 import { LocationCard } from "./LocationCard"
 import "./Location.css"
+import { EmployeeContext } from "../employee/EmployeeProvider"
+import { AnimalContext } from "../animal/AnimalProvider"
 
 
 export const LocationList = () => {
     const { locations, getLocations } = useContext(LocationContext)
+    const { employees, getEmployees } = useContext(EmployeeContext)
+    const { animals, getAnimals } = useContext(AnimalContext)
 
     useEffect(() => {
-        getLocations()
+        getEmployees()
+        .then(getAnimals)
+        .then(getLocations)
     }, [])
 
     const history = useHistory()
@@ -20,7 +26,7 @@ export const LocationList = () => {
             <div className="locations">
                 {
                 locations.map(location => {
-                    return <LocationCard key={location.id} location={location} />
+                    return <LocationCard key={location.id} location={location} employees={employees} animals={animals}/>
                 })
                 }
             </div>
