@@ -12,7 +12,8 @@ import { LocationProvider } from "../location/LocationProvider"
 import { AnimalForm } from "../animal/AnimalForm"
 import { EmployeeForm } from "../employee/EmployeeForm"
 import { LocationForm } from "../location/LocationForm"
-
+import { AnimalDetail } from "../animal/AnimalDetail"
+import { EmployeeDetail } from "../employee/EmployeeDetail"
 
 // This is where we define how the application will respond when the URL matches each
 // of those patterns. When a user clicks a link in the nav bar the code dictates what should be rendered.
@@ -31,15 +32,21 @@ export const ApplicationViews = () => {
              <AnimalProvider>
                  <LocationProvider>
                     <CustomerProvider>
-                        <Route path="/animals">
+                        <Route exact path="/animals">
                             <AnimalList />
                         </Route>
 
                         <Route path="/animals/create">
                             <AnimalForm />    
-                        </Route>           
+                        </Route>
                     </CustomerProvider>
                  </LocationProvider>
+             </AnimalProvider>
+             
+             <AnimalProvider>
+                        <Route exact path="/animals/detail/:animalId(\d+)">
+                            <AnimalDetail />
+                        </Route>           
              </AnimalProvider>
             
             <CustomerProvider>
@@ -61,6 +68,10 @@ export const ApplicationViews = () => {
             <EmployeeProvider>
                 <Route path="/employees">
                     <EmployeeList />
+                </Route>
+
+                <Route exact path="/employees/detail/:employeeId(\d+)">
+                    <EmployeeDetail />
                 </Route>
 
                 <Route path="/employees/create">

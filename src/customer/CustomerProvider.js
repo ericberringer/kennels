@@ -7,13 +7,13 @@ export const CustomerProvider = (props) => {
     const [customers, setCustomers] = useState([])
 
     const getCustomers = () => {
-        return fetch("http://localhost:8088/customer")
+        return fetch("http://localhost:8088/customers")
         .then(res => res.json())
         .then(setCustomers)
     }
 
     const addCustomers = customerObj => {
-        return fetch("http://localhost:8088/customer", {
+        return fetch("http://localhost:8088/customers", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

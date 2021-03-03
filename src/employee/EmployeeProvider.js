@@ -1,7 +1,6 @@
 import React, { useState, createContext } from "react"
 
 export const EmployeeContext = createContext()
-// Will hold our constumer info.
 
 export const EmployeeProvider = (props) => {
     const [employees, setEmployees] = useState([])
@@ -10,6 +9,11 @@ export const EmployeeProvider = (props) => {
         return fetch("http://localhost:8088/employees")
         .then(res => res.json())
         .then(setEmployees)
+    }
+
+    const getEmployeeById = (id) => {
+        return fetch(`http://localhost:8088/employees/${id}?_expand=location`)
+            .then(res => res.json())
     }
 
     const addEmployees = customerObj => {
@@ -25,7 +29,7 @@ export const EmployeeProvider = (props) => {
 
     return (
         <EmployeeContext.Provider value={{
-            employees, getEmployees, addEmployees
+            employees, getEmployees, addEmployees, getEmployeeById
         }}>
             {props.children}
         </EmployeeContext.Provider>
