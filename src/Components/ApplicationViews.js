@@ -14,6 +14,7 @@ import { EmployeeForm } from "../employee/EmployeeForm"
 import { LocationForm } from "../location/LocationForm"
 import { AnimalDetail } from "../animal/AnimalDetail"
 import { EmployeeDetail } from "../employee/EmployeeDetail"
+import { LocationDetail } from "../location/LocationDetail"
 
 // This is where we define how the application will respond when the URL matches each
 // of those patterns. When a user clicks a link in the nav bar the code dictates what should be rendered.
@@ -32,19 +33,33 @@ export const ApplicationViews = () => {
              <AnimalProvider>
                  <LocationProvider>
                     <CustomerProvider>
+                        <EmployeeProvider>
+
                         <Route exact path="/animals">
                             <AnimalList />
                         </Route>
-
+                        
+                        <Route exact path="/locations/detail/:locationId(\d+)">
+                            <LocationDetail />
+                        </Route>
+                        
                         <Route path="/animals/create">
                             <AnimalForm />    
                         </Route>
+
+                        <Route exact path="/locations">
+                            <LocationList />
+                        </Route>
+
+                        </EmployeeProvider>
                     </CustomerProvider>
                  </LocationProvider>
              </AnimalProvider>
              
              <AnimalProvider>
                         <Route exact path="/animals/detail/:animalId(\d+)">
+                            {/*  
+                            The (\d+) is saying the item needs to be a number. */}
                             <AnimalDetail />
                         </Route>           
              </AnimalProvider>
@@ -56,11 +71,8 @@ export const ApplicationViews = () => {
             </CustomerProvider>
             
         <LocationProvider>
-                <Route path="/locations">
-                    <LocationList />
-                </Route>
 {/* Try using exact path instead of just path */}
-                <Route path="/locations/create">
+                <Route exact path="/locations/create">
                     <LocationForm />
                 </Route>
 
