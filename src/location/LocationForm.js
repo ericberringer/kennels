@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useState } from "react"
 import { LocationContext } from "../location/LocationProvider"
 import "./Location.css"
 import { useHistory } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 export const LocationForm = () => {
     
     
-    const { locations, getLocations, addLocations } = useContext(LocationContext)
+    const { getLocations, addLocations } = useContext(LocationContext)
 
     const [location, setLocation] = useState(
     {
@@ -16,20 +16,12 @@ export const LocationForm = () => {
 
     const history = useHistory();
 
-    useEffect(() => {
-        getLocations()
-    }, [])
-
     const handleControlledInputChange = (event) => {
         /* When changing a state object or array,
         always create a copy, make changes, and then set state.*/
         const newLocation = { ...location }
         let selectedVal = event.target.value
-        // forms always provide values as strings. But we want to save the ids as numbers. This will cover both customer and location ids
-        if (event.target.id.includes("Id")) {
-          selectedVal = parseInt(selectedVal)
-        }
-       
+        // forms always provide values as strings. But we want to save the ids as numbers. This will cover both customer and location ids       
         newLocation[event.target.id] = selectedVal
         // update state
         setLocation(newLocation)
