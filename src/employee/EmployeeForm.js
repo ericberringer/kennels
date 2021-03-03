@@ -22,7 +22,8 @@ export const EmployeeForm = () => {
 
     const handleControlledInputChange = (event) => {
         /* When changing a state object or array,
-        always create a copy, make changes, and then set state.*/
+        always create a copy, make changes, and then set state.
+        The ... spread operator is making a copy of the employee object, setting new keys in it, and then we pass that object into addEmployees*/
         const newEmployee = { ...employee }
         let selectedVal = event.target.value
         // forms always provide values as strings. But we want to save the ids as numbers. This will cover both customer and location ids
@@ -76,7 +77,7 @@ export const EmployeeForm = () => {
             </fieldset>
             <button className="btn btn-primary"
               onClick={handleClickSaveEmployee}>
-              New Employee
+              Add Employee
             </button>
         </form>
       )

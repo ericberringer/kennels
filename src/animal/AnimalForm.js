@@ -81,6 +81,7 @@ export const AnimalForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Animal name:</label>
+                    {/* onChange={handleCrontrolledInputChange} is a callback function that is listening for the event which is the functions parameter */}
                     <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Animal name" value={animal.name}/>
                 </div>
             </fieldset>

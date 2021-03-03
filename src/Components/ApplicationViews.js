@@ -11,6 +11,7 @@ import { LocationList } from "../location/LocationList"
 import { LocationProvider } from "../location/LocationProvider"
 import { AnimalForm } from "../animal/AnimalForm"
 import { EmployeeForm } from "../employee/EmployeeForm"
+import { LocationForm } from "../location/LocationForm"
 
 
 // This is where we define how the application will respond when the URL matches each
@@ -50,6 +51,10 @@ export const ApplicationViews = () => {
         <LocationProvider>
                 <Route path="/locations">
                     <LocationList />
+                </Route>
+{/* Try using exact path instead of just path */}
+                <Route path="/locations/create">
+                    <LocationForm />
                 </Route>
 
         
