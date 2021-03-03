@@ -4,7 +4,6 @@ import { Link } from "react-router-dom"
 
 export const AnimalCard = ({animal, customer, location})=> (
     <section className="animal">
-        {/* {console.log(animal)} */}
         <h3 className="animal__name">
         <Link to={`/animals/detail/${animal.id}`}>
           { animal.name }
