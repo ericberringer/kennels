@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 export const LocationForm = () => {
     
     
-    const { getLocations, addLocations } = useContext(LocationContext)
+    const { addLocations } = useContext(LocationContext)
 
     const [location, setLocation] = useState(
     {

@@ -12,6 +12,8 @@ export const LocationList = () => {
     const { employees, getEmployees } = useContext(EmployeeContext)
     const { animals, getAnimals } = useContext(AnimalContext)
 
+    // Within useEffect it is a good idea to set the data you are mapping through at the end of the .thens.
+    // In this case we are mapping locations so it will be at the end of useEffect.
     useEffect(() => {
         getEmployees()
         .then(getAnimals)
@@ -26,6 +28,8 @@ export const LocationList = () => {
             <div className="locations">
                 {
                 locations.map(location => {
+                    // Location, Employee, and Animal context are all available so we can pass them all into Location Card
+                    // which is what is happening with location={location} etc.
                     return <LocationCard key={location.id} location={location} employees={employees} animals={animals}/>
                 })
                 }

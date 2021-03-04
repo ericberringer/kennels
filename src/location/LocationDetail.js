@@ -6,12 +6,14 @@ import { EmployeeContext } from "../employee/EmployeeProvider"
 import { AnimalContext } from "../animal/AnimalProvider"
 
 export const LocationDetail = () => {
-    // useContext is bringing in the getAnimalById from our AnimalProvider.
+    // useContext is bringing in the getLocationById from our AnimalProvider. And bringing in the necessary employee and animal info.
   const { getLocationById } = useContext(LocationContext)
   const { employees, getEmployees } = useContext(EmployeeContext)
   const { animals, getAnimals } = useContext(AnimalContext)
 
 	const [location, setLocation] = useState({})
+  // This state variable will allow us to set the locationId from the url into our locaiton variable. 
+  // So we can access it in order to select the specific location.
 
 	const {locationId} = useParams();
     // useParams is a react function that allows the app
@@ -19,6 +21,7 @@ export const LocationDetail = () => {
 	const history = useHistory();
 
   useEffect(() => {
+    // This sets the locationId from the url into our state location variable.
     getLocationById(locationId)
     .then((response) => {
       setLocation(response)
@@ -30,9 +33,9 @@ export const LocationDetail = () => {
   return (
     <section className="location">
       <h3 className="location__name">{location.name}</h3>
-      {/* The question mark is an Optional chaining operator to prevent nested values
-      from breaking the code.*/}
       <div className="location__address">Address: {location.address}</div>
+      {/* Grab the employees who match their locationId with id of location, print those locations names.
+      Do the same for animals. */}
       <div className="location__employees">Employees: {
       employees.filter(employee => employee.locationId === location.id)
       .map(employee => employee.name).join(", ")

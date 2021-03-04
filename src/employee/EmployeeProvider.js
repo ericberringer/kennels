@@ -27,6 +27,8 @@ export const EmployeeProvider = (props) => {
         .then(getEmployees)
     }
 
+    // Put provider goes here.
+
     return (
         <EmployeeContext.Provider value={{
             employees, getEmployees, addEmployees, getEmployeeById

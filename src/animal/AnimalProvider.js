@@ -24,6 +24,9 @@ export const AnimalProvider = (props) => {
         return fetch(`http://localhost:8088/animals/${id}?_expand=location&_expand=customer`)
             .then(res => res.json())
     }
+    // doing an expand at the end of this url is accessing the locations and customer data
+    // within this fetch call. In Animal Detail we are accessing the location and customer through this function.
+
 
     const addAnimal = animalObj => {
         return fetch("http://localhost:8088/animals", {

@@ -27,7 +27,8 @@ export const LocationProvider = (props) => {
         })
         .then(getLocations)
     }
-
+// Sending out the data from our provider via LocationContext so 
+// other components can access it.
     return (
         <LocationContext.Provider value={{
             locations, getLocations, addLocations, getLocationById
