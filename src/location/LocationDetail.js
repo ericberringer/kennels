@@ -29,7 +29,6 @@ export const LocationDetail = () => {
 
   return (
     <section className="location">
-        {console.log(employees, animals)}
       <h3 className="location__name">{location.name}</h3>
       {/* The question mark is an Optional chaining operator to prevent nested values
       from breaking the code.*/}
