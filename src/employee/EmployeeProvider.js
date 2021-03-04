@@ -27,11 +27,22 @@ export const EmployeeProvider = (props) => {
         .then(getEmployees)
     }
 
+    const updateEmployee = employee => {
+        return fetch(`http://localhost:8088/employees/${employee.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(employee)
+        })
+          .then(getEmployees)
+      }
+
     // Put provider goes here.
 
     return (
         <EmployeeContext.Provider value={{
-            employees, getEmployees, addEmployees, getEmployeeById
+            employees, getEmployees, addEmployees, getEmployeeById, updateEmployee
         }}>
             {props.children}
         </EmployeeContext.Provider>
