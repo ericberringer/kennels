@@ -43,14 +43,14 @@ export const ApplicationViews = () => {
                             <AnimalForm />    
                         </Route>
                         
-                        <Route path="/animals/edit/:animalId(\d+)">
-                            <AnimalForm />
-                        </Route>
-
                         <Route exact path="/animals/detail/:animalId(\d+)">
                             {/*  
                             The (\d+) is saying the item needs to be a number. */}
                             <AnimalDetail />
+                        </Route>
+                        
+                        <Route path="/animals/edit/:animalId(\d+)">
+                            <AnimalForm />
                         </Route>
                         
                         </EmployeeProvider>

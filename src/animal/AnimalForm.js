@@ -84,13 +84,20 @@ export const AnimalForm = () => {
               customerId: parseInt(animal.customerId)
           })
           .then(() => history.push("/animals"))
+          // this is taking us back to the animals page after the form is submitted.
+          // history is reaching back to the previous url we were at and sending us back there so the user doesn't stay on the 
+          // edit animal screen.
         }
       }
     }
 
     // Get customers and locations. If animalId is in the URL, getAnimalById
+    // This checks if we are doing an edit to an animal, if so it fills the fields with the existing
+    // info to be edited.
     useEffect(() => {
-      getCustomers().then(getLocations).then(() => {
+      getCustomers()
+      .then(getLocations)
+      .then(() => {
         if (animalId) {
           getAnimalById(animalId)
           .then(animal => {
