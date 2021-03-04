@@ -17,7 +17,6 @@ export const AnimalDetail = () => {
 	
   const history = useHistory();
 
-
   const handleRelease = () => {
     releaseAnimal(animal.id)
       .then(() => {
