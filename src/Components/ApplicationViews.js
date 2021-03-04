@@ -27,9 +27,9 @@ export const ApplicationViews = () => {
             <Route exact path="/">
                 <Home />
             </Route>
-
-            {/* Render the animal list when http://localhost:3000/animals */}
-{/* The Animal List is wrapped in the animal provider has to do with Context. */}
+           
+            {/* ##### Animals ##### */}
+             
              <AnimalProvider>
                  <LocationProvider>
                     <CustomerProvider>
@@ -39,20 +39,42 @@ export const ApplicationViews = () => {
                             <AnimalList />
                         </Route>
                         
-                        <Route exact path="/locations/detail/:locationId(\d+)">
-                            <LocationDetail />
-                        </Route>
-                        
                         <Route path="/animals/create">
                             <AnimalForm />    
                         </Route>
+                        
+                        <Route path="/animals/edit/:animalId(\d+)">
+                            <AnimalForm />
+                        </Route>
+
+                        <Route exact path="/animals/detail/:animalId(\d+)">
+                            {/*  
+                            The (\d+) is saying the item needs to be a number. */}
+                            <AnimalDetail />
+                        </Route>
+                        
+                        </EmployeeProvider>
+                    </CustomerProvider>
+                 </LocationProvider>
+             </AnimalProvider>
+
+           {/* ##### Locations ##### */}
+
+             <AnimalProvider>
+                 <LocationProvider>
+                    <CustomerProvider>
+                        <EmployeeProvider>
 
                         <Route exact path="/locations">
                             <LocationList />
                         </Route>
 
-                        <Route path="/animals/edit/:animalId(\d+)">
-                            <AnimalForm />
+                        <Route exact path="/locations/create">
+                            <LocationForm />
+                        </Route>
+
+                        <Route exact path="/locations/detail/:locationId(\d+)">
+                            <LocationDetail />
                         </Route>
 
                         </EmployeeProvider>
@@ -60,41 +82,45 @@ export const ApplicationViews = () => {
                  </LocationProvider>
              </AnimalProvider>
              
+            {/* ##### Customers ##### */}
+
              <AnimalProvider>
-                        <Route exact path="/animals/detail/:animalId(\d+)">
-                            {/*  
-                            The (\d+) is saying the item needs to be a number. */}
-                            <AnimalDetail />
-                        </Route>           
+                 <LocationProvider>
+                    <CustomerProvider>
+                        <EmployeeProvider>
+
+                        <Route path="/customers">
+                            <CustomerList />
+                        </Route>    
+
+                        </EmployeeProvider>
+                    </CustomerProvider>
+                 </LocationProvider>
              </AnimalProvider>
             
-            <CustomerProvider>
-                <Route path="/customers">
-                    <CustomerList />
-                </Route>
-            </CustomerProvider>
-            
-        <LocationProvider>
-{/* Try using exact path instead of just path */}
-                <Route exact path="/locations/create">
-                    <LocationForm />
-                </Route>
+            {/* ##### Employees ##### */}
 
-        
-            <EmployeeProvider>
-                <Route path="/employees">
-                    <EmployeeList />
-                </Route>
+             <AnimalProvider>
+                 <LocationProvider>
+                    <CustomerProvider>
+                        <EmployeeProvider>
 
-                <Route exact path="/employees/detail/:employeeId(\d+)">
-                    <EmployeeDetail />
-                </Route>
+                        <Route path="/employees">
+                            <EmployeeList />
+                        </Route>  
 
-                <Route path="/employees/create">
-                    <EmployeeForm />
-                </Route>
-            </EmployeeProvider>
-        </LocationProvider>
+                        <Route exact path="/employees/detail/:employeeId(\d+)">
+                            <EmployeeDetail />
+                        </Route>
+
+                        <Route exact path="/employees/create">
+                            <EmployeeForm />
+                        </Route>  
+
+                        </EmployeeProvider>
+                    </CustomerProvider>
+                 </LocationProvider>
+             </AnimalProvider>
 
         </>
     )
