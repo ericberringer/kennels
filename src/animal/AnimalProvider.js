@@ -1,5 +1,6 @@
 import React, { useState, createContext } from "react"
 
+
 // The context is imported and used by individual components that need data
 // A context stores data to be used in our application. A context needs to be
 // created anytime there is a data provider component.
@@ -8,6 +9,9 @@ export const AnimalContext = createContext()
 
 // This component establishes what data can be used.
 export const AnimalProvider = (props) => {
+    // This info typed into the search field is considered state.
+    // This is where the state from the search field will be stored.
+    const [ searchTerms, setSearchTerms ] = useState("")
     const [animals, setAnimals] = useState([])
     // setAnimals is a function that allows us to set a value to the animals variable and update it.
     // animals will hold all of the animals from our api via .then(setAnimals) in our fetch call.
@@ -70,7 +74,7 @@ export const AnimalProvider = (props) => {
     */
     return (
         <AnimalContext.Provider value={{
-            animals, getAnimals, getAnimalById, addAnimal, releaseAnimal, updateAnimal
+            animals, getAnimals, getAnimalById, addAnimal, releaseAnimal, updateAnimal, searchTerms, setSearchTerms
         }}>
             {props.children}
         </AnimalContext.Provider>
