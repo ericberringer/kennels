@@ -52,7 +52,7 @@ return (
     <div className="animals">
         {/* {console.log("AnimalList: Render", animals)} */}
         {
-          animals.map(animal => {
+          filteredAnimals.map(animal => {
             const owner = customers.find(customer => customer.id === animal.customerId)
             const clinic = locations.find(location => location.id === animal.locationId) 
             
