@@ -27,7 +27,6 @@ export const EmployeeDetail = () => {
       {/* The question mark is an Optional chaining operator to prevent nested values
       from breaking the code.*/}
       <div className="employee__location">Location: {employee.location?.name}</div> 
-      <button>Release Employee</button>
       <button onClick={() => {history.push(`/employees/edit/${employee.id}`)}}>Edit</button>
     </section>
   )
