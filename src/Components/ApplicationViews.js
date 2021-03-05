@@ -15,6 +15,7 @@ import { LocationForm } from "../location/LocationForm"
 import { AnimalDetail } from "../animal/AnimalDetail"
 import { EmployeeDetail } from "../employee/EmployeeDetail"
 import { LocationDetail } from "../location/LocationDetail"
+import { AnimalSearch } from "../animal/AnimalSearch"
 
 // This is where we define how the application will respond when the URL matches each
 // of those patterns. When a user clicks a link in the nav bar the code dictates what should be rendered.
@@ -22,7 +23,6 @@ import { LocationDetail } from "../location/LocationDetail"
 export const ApplicationViews = () => {
     return (
         <>
-            {/* Render the location list when http://localhost:3000/ */}
              
             <Route exact path="/">
                 <Home />
@@ -36,6 +36,7 @@ export const ApplicationViews = () => {
                         <EmployeeProvider>
 
                         <Route exact path="/animals">
+                            <AnimalSearch />
                             <AnimalList />
                         </Route>
                         
@@ -52,7 +53,7 @@ export const ApplicationViews = () => {
                         <Route path="/animals/edit/:animalId(\d+)">
                             <AnimalForm />
                         </Route>
-                        
+
                         </EmployeeProvider>
                     </CustomerProvider>
                  </LocationProvider>
