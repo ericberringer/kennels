@@ -77,6 +77,10 @@ export const ApplicationViews = () => {
                             <LocationForm />
                         </Route>
 
+                        <Route exact path="/locations/create">
+                            <LocationForm />
+                        </Route>
+
                         <Route exact path="/locations/detail/:locationId(\d+)">
                             <LocationDetail />
                         </Route>
@@ -120,6 +124,10 @@ export const ApplicationViews = () => {
                         <Route exact path="/employees/edit/:employeeId(\d+)">
                             <EmployeeForm />
                         </Route>  
+
+                        <Route exact path="/employees/create">
+                            <EmployeeForm />
+                        </Route>
 
                         </EmployeeProvider>
                     </CustomerProvider>
