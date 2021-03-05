@@ -36,6 +36,9 @@ export const ApplicationViews = () => {
                         <EmployeeProvider>
 
                         <Route exact path="/animals">
+                            {/* User types in search term and is filtered in animal search, 
+                            and animals are rendered via animal list so they need to be nested together.
+                            These are sybling components */}
                             <AnimalSearch />
                             <AnimalList />
                         </Route>
@@ -68,6 +71,10 @@ export const ApplicationViews = () => {
 
                         <Route exact path="/locations">
                             <LocationList />
+                        </Route>
+
+                        <Route exact path="/locations/edit/:locationId(\d+)">
+                            <LocationForm />
                         </Route>
 
                         <Route exact path="/locations/create">
@@ -117,6 +124,10 @@ export const ApplicationViews = () => {
                         <Route exact path="/employees/edit/:employeeId(\d+)">
                             <EmployeeForm />
                         </Route>  
+
+                        <Route exact path="/employees/create">
+                            <EmployeeForm />
+                        </Route>
 
                         </EmployeeProvider>
                     </CustomerProvider>
