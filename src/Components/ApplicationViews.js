@@ -36,6 +36,9 @@ export const ApplicationViews = () => {
                         <EmployeeProvider>
 
                         <Route exact path="/animals">
+                            {/* User types in search term and is filtered in animal search, 
+                            and animals are rendered via animal list so they need to be nested together.
+                            These are sybling components */}
                             <AnimalSearch />
                             <AnimalList />
                         </Route>

@@ -8,6 +8,8 @@ export const AnimalContext = createContext()
 // Animal Context is a container waiting to be filled with info.
 
 // This component establishes what data can be used.
+// This is a parent component and will be passing props down to any child components nested inside 
+// of it on application views.
 export const AnimalProvider = (props) => {
     // This info typed into the search field is considered state.
     // This is where the state from the search field will be stored.

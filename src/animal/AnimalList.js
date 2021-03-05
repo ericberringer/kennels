@@ -5,8 +5,10 @@ import { CustomerContext } from "../customer/CustomerProvider"
 import { LocationContext } from "../location/LocationProvider"
 import { AnimalCard } from "./AnimalCard"
 import "./Animal.css"
-import { AnimalSearch } from "./AnimalSearch"
 
+
+// Animal List is a parent component and Animal Card is a child component, you can only pass props from
+// a parent to child component. Cannot pass props to sybling components either.
 export const AnimalList = () => {
     const { animals, getAnimals, searchTerms } = useContext(AnimalContext)
     const { locations, getLocations } = useContext(LocationContext)
@@ -37,7 +39,7 @@ export const AnimalList = () => {
   useEffect(() => {
     if (searchTerms !== "") {
       // If the search field is not blank, display matching animals
-      const subset = animals.filter(animal => animal.name.toLowerCase().includes(searchTerms))
+      const subset = animals.filter(animal => animal.name.toLowerCase().includes(searchTerms.toLowerCase()))
       setFiltered(subset)
     } else {
       // If the search field is blank, display all animals
