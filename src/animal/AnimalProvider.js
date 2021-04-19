@@ -21,13 +21,13 @@ export const AnimalProvider = (props) => {
 
 
     const getAnimals = () => {
-        return fetch("http://localhost:8088/animals?_expand=location")
+        return fetch("http://localhost:8088/animals")
         .then(res => res.json())
         .then(setAnimals)
     }
 
     const getAnimalById = (id) => {
-        return fetch(`http://localhost:8088/animals/${id}?_expand=location&_expand=customer`)
+        return fetch(`http://localhost:8088/animals/${id}`)
             .then(res => res.json())
     }
     // doing an expand at the end of this url is accessing the locations and customer data

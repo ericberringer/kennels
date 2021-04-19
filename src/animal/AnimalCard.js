@@ -11,8 +11,8 @@ export const AnimalCard = ({animal, customer, location})=> (
         </Link>
         </h3>
         <div className="animal__breed">Breed: {animal.breed}</div>
-        <div className="animal__clinic">Clinic: {location.name}</div>
-        <div className="animal__customer">Customer: {customer.name}</div>
+        {/* <div className="animal__clinic">Clinic: {location.name}</div> */}
+        {/* <div className="animal__customer">Customer: {customer.name}</div> */}
 
     </section>
 )

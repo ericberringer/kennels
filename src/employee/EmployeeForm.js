@@ -11,6 +11,7 @@ export const EmployeeForm = () => {
 
     const [employee, setEmployee] = useState({
         name: "",
+        address: "",
         locationId: 0
     });
     
@@ -28,7 +29,7 @@ export const EmployeeForm = () => {
     const handleControlledInputChange = (event) => {
         /* When changing a state object or array,
         always create a copy, make changes, and then set state.
-        The ... spread operator is making a copy of the employee object, setting new keys in it, and then we pass that object into addEmployees*/
+        The ... spread operator is making a copy of the employee object, setting new keys in it, and then we pass that object into setEmployees*/
         const newEmployee = { ...employee }
         newEmployee[event.target.id] = event.target.value
         // update state
@@ -47,6 +48,7 @@ export const EmployeeForm = () => {
             updateEmployee({
                 id: employee.id,
                 name: employee.name,
+                address: employee.address,
                 locationId: parseInt(employee.locationId)
             })
             .then(() => history.push(`/employees/detail/${employee.id}`))
@@ -54,6 +56,7 @@ export const EmployeeForm = () => {
             //POST - add
             addEmployees({
                 name: employee.name,
+                address: employee.address,
                 locationId: parseInt(employee.locationId)                
             })
             .then(() => history.push("/employees"))
@@ -83,6 +86,12 @@ export const EmployeeForm = () => {
                 <div className="form-group">
                     <label htmlFor="name">Employee name:</label>
                     <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Employee name" value={employee.name}/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="address">Employee address:</label>
+                    <input type="text" id="address" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Employee address" value={employee.address}/>
                 </div>
             </fieldset>
             <fieldset>
